@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.skysigh.skymall.web.dao.UserDao">
+
+    <select id="findById" resultType="org.skysigh.skymall.web.po.User" parameterType="long">
+        SELECT
+            *
+        FROM
+            user_t
+        WHERE
+            id = #{id}
+    </select>
+
+    <insert id="add" keyProperty="id" keyColumn="id" useGeneratedKeys="true" parameterType="org.skysigh.skymall.web.po.User">
+        INSERT INTO user_t (account, password,realName,nickName)
+        VALUES ( #{account},#{password}, #{realName},#{nickName})
+    </insert>
+</mapper>
